@@ -11,8 +11,6 @@ static uint16_t fsm_len_string_name1 = 0, fsm_len_string_name2 = 0;
 
 static void Print_Data_Detect(FrameMsg_t frame);
 
-
-
 void SYS_Init(void)
 {	
 	previous_point1 = (uint8_t)0, previous_point2 = (uint8_t)0;
@@ -40,8 +38,7 @@ void SYS_Run(void)
 
 void SYS_ButtonFunction(void)
 {
-	BUTTON_Reads();
-	BUTTON_Read3();
+	BUTTON_Reads();	
 	BUTTON_Display();
 	if(count1 >= 11 && (count1 - count2) >= 2)
 	{
@@ -167,6 +164,7 @@ void SYS_ReceiveFuntion(void)
 				free(string_name1);
 				string_name1 = malloc(frame_detect.LengthData-2);
 				fsm_len_string_name1 = frame_detect.LengthData-2;
+				flash_read_len_string1 = fsm_len_string_name1;
 				memcpy(string_name1, frame_detect.Data, frame_detect.LengthData-2);
 				Usart_Send_Char('\n');
 				Usart_Send_String((char *)string_name1);
@@ -193,6 +191,7 @@ void SYS_ReceiveFuntion(void)
 				Usart_Send_String("NAME_PLAYER_2");
 				string_name2 = malloc(frame_detect.LengthData-2);
 				fsm_len_string_name2 = frame_detect.LengthData-2;
+				flash_read_len_string2 = fsm_len_string_name2;
 				memcpy(string_name2, frame_detect.Data, frame_detect.LengthData-2);
 				Usart_Send_Char('\n');
 				Usart_Send_String((char *)string_name2);
@@ -235,7 +234,7 @@ void SYS_WriteFlash(void)
 	{
 		Flash_Unlock();
 		Flash_Erase(address);
-		Flash_WriteStruct(&address, flash_write_str, fsm_len_string_name1, fsm_len_string_name2 );
+		Flash_WriteStruct(&address, flash_write_str, flash_read_len_string1, flash_read_len_string1 );
 		Flash_Lock();		
 		flag_check_save_flash = 0;
 	}
@@ -253,4 +252,7 @@ void SYS_ReadFlash(void)
 	count2 = flash_read_str.Point2;
 	score_past1 = flash_read_str.Score1;
 	score_past2 = flash_read_str.Score2;	
+//	free(string_name1);
+//	string_name1 = malloc(flash_read_len_string1);
+	
 }

@@ -149,7 +149,7 @@ void UI_NamePlayer(u8 mode, u8 *player)
 			for(len = 0 ; len < flash_read_len_string1; len ++)
 			{
 				flash_write_str.Name_Player1[len] = player[len];
-//				Usart_Send_Char(player[len]);
+				
 			}	
 		break;
 		
@@ -160,7 +160,6 @@ void UI_NamePlayer(u8 mode, u8 *player)
 			for(len = 0 ; len < flash_read_len_string2; len ++)
 			{
 				flash_write_str.Name_Player2[len] = player[len];
-//				Usart_Send_Char(player[len]);
 			}		
 		break;
 	}

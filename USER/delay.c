@@ -11,7 +11,6 @@ void DELAY_Init(void)
 void SysTick_Handler(void)
 {
 	i--;
-	GPIO_LedChange();
 	SYS_ReceiveFuntion();
 }
 
