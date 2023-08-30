@@ -56,6 +56,11 @@ uint8_t SEC_Message_Create_Frame(FrameMsg_t DataIn, uint8_t *DataOut)
             DataIn.Data[data_leng] = '\0';
             DataIn.LengthData = 2 + data_leng +1;
             break;
+				case ROUND:
+            data_leng = strlen(DataIn.Data);
+            DataIn.Data[data_leng] = '\0';
+            DataIn.LengthData = 2 + data_leng +1;
+            break;
     }
     DataIn.CheckFrame = CheckSum(arr_temp, LENGTH_DEFAULT+ DataIn.LengthData);
     // copy arr_temp vao mang data out
@@ -131,4 +136,88 @@ uint16_t CheckSum(uint8_t *buf, uint8_t len)
         }
     }
     return crc;
+}
+
+void Message_SendPoint1(uint8_t point1)
+{
+	uint8_t mystring = point1;
+	FrameMsg_t frame_test;
+	uint8_t arr_create_frame_point1[30], length_arr = 0;
+	frame_test.StartFrame   = START_BYTE;
+	frame_test.TypeMessage  = POINT1;
+	frame_test.Data[0] = mystring;
+	frame_test.Data[1] = '\0';
+	length_arr              = SEC_Message_Create_Frame(frame_test, arr_create_frame_point1);
+	uint8_t count ;
+	for(count = 0 ; count < length_arr ; count ++)
+	{
+		Usart_Send_Char(arr_create_frame_point1[count]);
+	}
+}
+void Message_SendPoint2(uint8_t point2)
+{
+	uint8_t mystring = point2;
+	FrameMsg_t frame_test;
+	uint8_t arr_create_frame_point2[30], length_arr = 0;
+	frame_test.StartFrame   = START_BYTE;
+	frame_test.TypeMessage  = POINT2;
+	frame_test.Data[0] = mystring;
+	frame_test.Data[1] = '\0';
+	length_arr              = SEC_Message_Create_Frame(frame_test, arr_create_frame_point2);
+	uint8_t count ;
+	for(count = 0 ; count < length_arr ; count ++)
+	{
+		Usart_Send_Char(arr_create_frame_point2[count]);
+	}
+}
+
+void Message_SendScore1(uint8_t score1)
+{
+	uint8_t mystring = score1;
+	uint8_t count;
+	FrameMsg_t frame_test;
+	uint8_t arr_create_frame_score1[30], length_arr = 0;
+	frame_test.StartFrame   = START_BYTE;
+	frame_test.TypeMessage  = SCORE1;
+	frame_test.Data[0] = mystring;
+	frame_test.Data[1] = '\0';
+	length_arr              = SEC_Message_Create_Frame(frame_test, arr_create_frame_score1);
+	for(count = 0 ; count < length_arr ; count ++)
+	{
+		Usart_Send_Char(arr_create_frame_score1[count]);
+	}
+}
+
+void Message_SendScore2(uint8_t score2)
+{
+	uint8_t mystring = score2;
+	uint8_t count;
+	FrameMsg_t frame_test;
+	uint8_t arr_create_frame_score2[30], length_arr = 0;
+	frame_test.StartFrame   = START_BYTE;
+	frame_test.TypeMessage  = SCORE2;
+	frame_test.Data[0] = mystring;
+	frame_test.Data[1] = '\0';
+	length_arr              = SEC_Message_Create_Frame(frame_test, arr_create_frame_score2);
+	for(count = 0 ; count < length_arr ; count ++)
+	{
+		Usart_Send_Char(arr_create_frame_score2[count]);
+	}
+}
+
+void Message_SendRound(uint8_t round)
+{
+	uint8_t mystring = round;
+	uint8_t count;
+	FrameMsg_t frame_test;
+	uint8_t arr_create_frame_round[30], length_arr = 0;
+	frame_test.StartFrame   = START_BYTE;
+	frame_test.TypeMessage  = ROUND;
+	frame_test.Data[0] = mystring;
+	frame_test.Data[1] = '\0';
+	length_arr              = SEC_Message_Create_Frame(frame_test, arr_create_frame_round);
+	for(count = 0 ; count < length_arr ; count ++)
+	{
+		Usart_Send_Char(arr_create_frame_round[count]);
+	}
 }

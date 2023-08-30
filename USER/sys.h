@@ -29,6 +29,10 @@ extern Information flash_write_str, flash_read_str;
 extern uint8_t player1[], player2[];
 extern u8 flag_check_save_flash;
 extern FrameMsg_t frame_detect;
+extern uint8_t *string_name2;
+extern uint8_t *string_name1;
+
+
 
 void SYS_Init(void);
 void SYS_Run(void);

@@ -27,6 +27,7 @@
 .\objects\touch.o: ..\USER\fsm_array_receive.h
 .\objects\touch.o: ..\USER\Convert.h
 .\objects\touch.o: ..\USER\Message.h
+.\objects\touch.o: ..\USER\uart.h
 .\objects\touch.o: ..\USER\gpio.h
 .\objects\touch.o: ..\USER\delay.h
 .\objects\touch.o: ..\USER\touch.h

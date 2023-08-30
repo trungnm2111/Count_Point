@@ -10,7 +10,7 @@ static uint16_t stt_new3 = 1, stt_old3 = 1;
 uint16_t count1 = 0;
 uint16_t count2 = 0;
 uint8_t button_pressed = 0;
-uint8_t current_player = 1;
+uint8_t current_player;
 
 uint8_t game_round = 1;
 uint8_t score_player1 = 0, score_player2 = 0;
@@ -63,23 +63,22 @@ void BUTTON_Display(void)
 {
 	if(button_pressed == 1)
 	{
+		if((count1 + count2) % 2 == 0)
+		{
+			switch(current_player)
+			{
+				case 1:
+					current_player = 2;
+				break;
+
+				case 2:
+					current_player = 1;
+				break;
+			}
+		}
 		UI_Points1(count1);
 		UI_Points2(count2);
 		flag_check_save_flash = 1;
-//		UI_Score1(score_player1);
-//		UI_Score2(score_player2);
-//		UI_RoundNumber(game_round, select_round);
-		if((count1 + count2) % 2 == 0)
-		{
-			if (current_player == 1)
-			{
-				current_player = 2;
-			}
-			if(current_player == 2)
-			{
-				current_player = 1;
-			}
-		}
 	}
 }
 

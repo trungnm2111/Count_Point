@@ -31,6 +31,8 @@ extern uint8_t arr_data8bit[1000];
 extern uint16_t arr_data16bit[1000];
 extern uint32_t arr_data32bit[1000];
 extern uint64_t arr_data64bit[1000];
+extern uint16_t flash_read_len_string1;
+extern uint16_t flash_read_len_string2;
 
 typedef struct{
 	uint8_t		Selection_round;
@@ -60,7 +62,7 @@ void Flash_ReadArray8bit(uint32_t *start_address,uint16_t lenght_data);
 void Flash_ReadArray16bit(uint32_t *start_address, uint16_t lenght_data);
 void Flash_ReadArray32bit(uint32_t *start_address,uint16_t lenght_data);
 void Flash_ReadArray64bit( uint32_t *start_address,uint16_t lenght_data);
-void Flash_ReadString( uint32_t *start_address, char *buff);
+uint16_t Flash_ReadString( uint32_t *start_address, char *buff);
 Information Flash_ReadStruct(uint32_t *start_address, Information save_str );
 
 void  Flash_Write8bit(uint32_t *start_address,uint8_t data);

@@ -30,6 +30,7 @@
 .\objects\button.o: ..\USER\fsm_array_receive.h
 .\objects\button.o: ..\USER\Convert.h
 .\objects\button.o: ..\USER\Message.h
+.\objects\button.o: ..\USER\uart.h
 .\objects\button.o: ..\USER\gpio.h
 .\objects\button.o: ..\USER\delay.h
 .\objects\button.o: ..\USER\touch.h

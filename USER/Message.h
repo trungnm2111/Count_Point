@@ -3,6 +3,7 @@
 
 #include "stdint.h"
 #include "string.h"
+#include "uart.h"
 
 #define START_BYTE          0xAA
 #define LENGTH_DEFAULT      2 /* StartFrame 1 + TypeMessage 1 */
@@ -52,7 +53,11 @@ uint8_t SEC_Message_Create_Frame(FrameMsg_t DataIn, uint8_t *DataOut);
     @retval: tr? v? 1 thành công, tr? v? 0 là l?i.
 */
 uint8_t SEC_Message_Detect_Frame(uint8_t *DataIn, FrameMsg_t *DataOut, uint16_t length_arr);
-
 uint16_t CheckSum(uint8_t *buf, uint8_t len);
+void Message_SendPoint1(uint8_t point1);
+void Message_SendPoint2(uint8_t point2);
+void Message_SendScore1(uint8_t score1);
+void Message_SendScore2(uint8_t score2);
+void Message_SendRound(uint8_t round);
 
 #endif // MESSAGE_H

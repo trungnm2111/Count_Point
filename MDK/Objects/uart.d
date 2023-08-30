@@ -21,3 +21,4 @@
 .\objects\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\uart.o: ..\USER\Message.h
+.\objects\uart.o: ..\USER\uart.h

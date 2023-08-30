@@ -5,6 +5,8 @@ FrameMsg_t frame_detect;
 
 static uint8_t game_ended = 0;
 u8 flag_check_save_flash = 0;
+uint8_t *string_name2;
+uint8_t *string_name1;
 static uint16_t fsm_len_string_name1 = 0, fsm_len_string_name2 = 0;
 
 static void Print_Data_Detect(FrameMsg_t frame);
@@ -21,6 +23,7 @@ void SYS_Init(void)
 	TOUCH_Init();
 	SYS_ReadFlash();
 	UI_Init();
+	current_player = 1;
 }
 
 void SYS_Run(void)
@@ -38,6 +41,7 @@ void SYS_Run(void)
 void SYS_ButtonFunction(void)
 {
 	BUTTON_Reads();
+	BUTTON_Read3();
 	BUTTON_Display();
 	if(count1 >= 11 && (count1 - count2) >= 2)
 	{
@@ -88,8 +92,6 @@ void SYS_ButtonFunction(void)
 
 void SYS_ReceiveFuntion(void)
 {
-	uint8_t *string_name2;
-	uint8_t *string_name1;
 	if(Usart_CheckFlag_Fsm() == 1)
 	{
 		static unsigned int count =0;
@@ -162,6 +164,7 @@ void SYS_ReceiveFuntion(void)
 				Usart_SendNumber(frame_detect.TypeMessage);
 				Usart_Send_Char('\n');
 				Usart_Send_String("NAME_PLAYER_1");
+				free(string_name1);
 				string_name1 = malloc(frame_detect.LengthData-2);
 				fsm_len_string_name1 = frame_detect.LengthData-2;
 				memcpy(string_name1, frame_detect.Data, frame_detect.LengthData-2);

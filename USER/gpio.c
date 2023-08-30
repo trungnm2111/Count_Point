@@ -7,12 +7,12 @@ static void GPIO_InitSpi(void);
 void GPIO_InitLed(void)
 {
 	GPIO_InitTypeDef Led;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-	GPIO_PinRemapConfig(GPIO_Remap_SWJ_Disable, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+//	GPIO_PinRemapConfig(GPIO_Remap_SWJ_Disable, ENABLE);
 	Led.GPIO_Mode = GPIO_Mode_Out_PP;
 	Led.GPIO_Pin = PIN_LED_RED | PIN_LED_GREEN;
 	Led.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOA, &Led);
+	GPIO_Init(PORT_LED_RED, &Led);
 	
 	GPIO_SetBits(PORT_LED_RED, PIN_LED_RED);
 	GPIO_SetBits(PORT_LED_GREEN, PIN_LED_GREEN);
@@ -62,7 +62,7 @@ void GPIO_LedChange(void)
 			GPIO_SetBits(PORT_LED_RED, PIN_LED_RED);
 			GPIO_ResetBits(PORT_LED_GREEN, PIN_LED_GREEN);
 		}
-		else 
+		if(current_player == 2 )
 		{
 			GPIO_SetBits(PORT_LED_GREEN, PIN_LED_GREEN);
 			GPIO_ResetBits(PORT_LED_RED, PIN_LED_RED);
@@ -75,7 +75,7 @@ void GPIO_LedChange(void)
 			GPIO_SetBits(PORT_LED_GREEN, PIN_LED_GREEN);
 			GPIO_ResetBits(PORT_LED_RED, PIN_LED_RED);
 		}
-		else  
+		if(current_player == 2) 
 		{
 			GPIO_SetBits(PORT_LED_RED, PIN_LED_RED);
 			GPIO_ResetBits(PORT_LED_GREEN, PIN_LED_GREEN);

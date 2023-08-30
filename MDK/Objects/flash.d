@@ -23,3 +23,4 @@
 .\objects\flash.o: ..\USER\Convert.h
 .\objects\flash.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\flash.o: ..\USER\Message.h
+.\objects\flash.o: ..\USER\uart.h

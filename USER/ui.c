@@ -139,17 +139,28 @@ void UI_RoundNumber(uint8_t number,uint8_t round)
 
 void UI_NamePlayer(u8 mode, u8 *player)
 {
+	u8 len;
 	switch(mode%2)
 	{
 		case 0:
 			LCD_ShowString(28, 70, GREEN, GREEN, 24, (uint8_t*)"          ", 0);
 			LCD_ShowString(28, 70, BLACK, GREEN, 24, player, 0);
-
+			for(len = 0 ; len < flash_read_len_string1; len ++)
+			{
+				flash_write_str.Name_Player1[len] = player[len];
+				Usart_Send_Char(player[len]);
+			}	
 		break;
 		
 		case 1:
+			Usart_Send_Char('\n');
 			LCD_ShowString(188, 70, YELLOW, YELLOW, 24, (uint8_t*)"          ", 0);
 			LCD_ShowString(188, 70, BLACK, YELLOW, 24, player, 0);
+			for(len = 0 ; len < flash_read_len_string2; len ++)
+			{
+				flash_write_str.Name_Player2[len] = player[len];
+				Usart_Send_Char(player[len]);
+			}		
 		break;
 	}
 }
@@ -171,6 +182,7 @@ void UI_Points1(uint8_t point)
 		LCD_Show_24x48_char(70-12, 120, RED, GREEN, '0' + point /10, 1);
 	}
 	previous_point1 = point;
+//	Message_SendPoint1(point);
 	flash_write_str.Point1 = point;
 }
 
@@ -192,6 +204,7 @@ void UI_Points2(uint8_t point)
 		LCD_Show_24x48_char(225-12, 120, RED, YELLOW, '0' + ((point) /10), 1);
 	}
 	previous_point2 = point;
+//	Message_SendPoint2(point);
 	flash_write_str.Point2 = point;
 }
 
@@ -200,6 +213,7 @@ void UI_Score1(uint8_t score)
 	LCD_Show_24x48_char(70, 17, WHITE, WHITE, '0' + (score_past1), 1);
 	LCD_Show_24x48_char(70, 17, BLUE, WHITE, '0' + score, 1);
 	score_past1 = score;
+//	Message_SendScore1(score);
 	flash_write_str.Score1 = score;
 }
 void UI_Score2(uint8_t score)
@@ -207,5 +221,6 @@ void UI_Score2(uint8_t score)
 	LCD_Show_24x48_char(230, 17, WHITE, WHITE, '0' + (score_past2), 1);
 	LCD_Show_24x48_char(230, 17, BLUE, WHITE, '0' + score, 1);
 	score_past2 = score;
+//	Message_SendScore2(score);
 	flash_write_str.Score2 = score;
 }

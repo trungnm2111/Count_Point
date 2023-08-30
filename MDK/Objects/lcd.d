@@ -27,6 +27,7 @@
 .\objects\lcd.o: ..\USER\fsm_array_receive.h
 .\objects\lcd.o: ..\USER\Convert.h
 .\objects\lcd.o: ..\USER\Message.h
+.\objects\lcd.o: ..\USER\uart.h
 .\objects\lcd.o: ..\USER\gpio.h
 .\objects\lcd.o: ..\USER\delay.h
 .\objects\lcd.o: ..\USER\touch.h

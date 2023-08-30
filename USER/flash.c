@@ -5,6 +5,8 @@ uint16_t arr_data16bit[1000];
 uint32_t arr_data32bit[1000];
 uint64_t arr_data64bit[1000];
 uint8_t flash_read_string_flag = 0 ;
+uint16_t flash_read_len_string1;
+uint16_t flash_read_len_string2;
 
 void Flash_Lock(void)
 {
@@ -181,7 +183,8 @@ void Flash_ReadArray64bit( uint32_t *start_address,uint16_t lenght_data)
 	}
 }
 
-void Flash_ReadString( uint32_t *start_address, char *buff)
+// ham tra ve do dai chuoi doc duoc
+uint16_t Flash_ReadString( uint32_t *start_address, char *buff)
 {
 	uint16_t i = 0;
 	while(1)
@@ -201,6 +204,8 @@ void Flash_ReadString( uint32_t *start_address, char *buff)
 	{
 		*start_address += (i+1)*1U;
 	}
+	uint16_t lenght_string_read = i +1;
+	return lenght_string_read;
 }
 
 Information Flash_ReadStruct(uint32_t *start_address, Information save_str )
@@ -235,12 +240,11 @@ Information Flash_ReadStruct(uint32_t *start_address, Information save_str )
 	{
 		save_str.Point2 = 0;
 	}
-	Flash_ReadString(start_address, (char *)save_str.Name_Player1);
-//	start_address++;
-//	Usart_Send_String((char *)save_str.Name_Player1);
-	
-	Flash_ReadString(start_address, (char *)save_str.Name_Player2);
-//	Usart_Send_String((char *)save_str.Name_Player2);
+	flash_read_len_string1 = Flash_ReadString(start_address, (char *)save_str.Name_Player1);
+	Usart_SendNumber((uint16_t)flash_read_len_string1);
+	Usart_Send_Char('\n');
+	flash_read_len_string2 = Flash_ReadString(start_address, (char *)save_str.Name_Player2);
+	Usart_SendNumber((uint16_t)flash_read_len_string2);
 	return save_str;
 }
 

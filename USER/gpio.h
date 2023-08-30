@@ -3,9 +3,9 @@
 
 #include "sys.h"
 
-#define PIN_LED_RED GPIO_Pin_3
+#define PIN_LED_RED GPIO_Pin_5
 #define PORT_LED_RED GPIOB
-#define PIN_LED_GREEN GPIO_Pin_4
+#define PIN_LED_GREEN GPIO_Pin_6
 #define PORT_LED_GREEN GPIOB
 
 #define PIN_BUTTON_1 GPIO_Pin_0
