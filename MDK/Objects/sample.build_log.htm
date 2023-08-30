@@ -27,7 +27,13 @@ Project File Date:  08/10/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-".\Objects\sample.axf" - 0 Error(s), 0 Warning(s).
+compiling ui.c...
+..\USER\ui.c(227): warning:  #1-D: last line of file ends without a newline
+  }
+..\USER\ui.c: 1 warning, 0 errors
+linking...
+Program Size: Code=15778 RO-data=24314 RW-data=128 ZI-data=2408  
+".\Objects\sample.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -87,7 +93,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:USART:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_usart.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

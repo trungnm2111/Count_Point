@@ -241,10 +241,7 @@ Information Flash_ReadStruct(uint32_t *start_address, Information save_str )
 		save_str.Point2 = 0;
 	}
 	flash_read_len_string1 = Flash_ReadString(start_address, (char *)save_str.Name_Player1);
-	Usart_SendNumber((uint16_t)flash_read_len_string1);
-	Usart_Send_Char('\n');
 	flash_read_len_string2 = Flash_ReadString(start_address, (char *)save_str.Name_Player2);
-	Usart_SendNumber((uint16_t)flash_read_len_string2);
 	return save_str;
 }
 

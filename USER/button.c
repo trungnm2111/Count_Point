@@ -50,6 +50,9 @@ void BUTTON_Read3(void)
 	{
 		count1 = previous_point1;
 		count2 = previous_point2;
+		UI_Points1(count1);
+		UI_Points2(count2);
+		flag_check_save_flash = 1;
 		button_pressed = 1;
 	}
 	else if(stt_old3 == 0 && stt_new3 == 1)
