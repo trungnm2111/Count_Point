@@ -7,12 +7,13 @@ uint8_t score_past1, score_past2;
 
 void UI_Init(void)
 {
+	current_player = 1;
 	UI_Frame();
 	UI_Points1(count1);
 	UI_Points2(count2);
 	UI_RoundNumber(game_round, select_round);
-	UI_Score1(score_past1);
-	UI_Score2(score_past2);
+	UI_Score1(score_player1);
+	UI_Score2(score_player2);
 	UI_NamePlayer(0,flash_read_str.Name_Player1);
 	UI_NamePlayer(1,flash_read_str.Name_Player2);
 }
@@ -113,7 +114,7 @@ void UI_RoundNumber(uint8_t number,uint8_t round)
 			break;
 			
 			case 4:
-				LCD_ShowString(120, 17, WHITE, WHITE, 24, (uint8_t *)"  ROUND 3  ", 0);
+				LCD_ShowString(120, 17, WHITE, WHITE, 24, (uint8_t *)"ROUND 3", 0);
 				LCD_ShowString(120, 17, RED, WHITE, 24, (uint8_t *)"ROUND 4", 0);
 			break;
 			
@@ -149,7 +150,6 @@ void UI_NamePlayer(u8 mode, u8 *player)
 			for(len = 0 ; len < flash_read_len_string1; len ++)
 			{
 				flash_write_str.Name_Player1[len] = player[len];
-				
 			}	
 		break;
 		

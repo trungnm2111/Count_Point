@@ -13,7 +13,6 @@ static void Print_Data_Detect(FrameMsg_t frame);
 
 void SYS_Init(void)
 {	
-	previous_point1 = (uint8_t)0, previous_point2 = (uint8_t)0;
 	GPIO_Inits();
 	Usart_Config(USART1, 9600);
 	DELAY_Init();
@@ -21,7 +20,6 @@ void SYS_Init(void)
 	TOUCH_Init();
 	SYS_ReadFlash();
 	UI_Init();
-	current_player = 1;
 }
 
 void SYS_Run(void)
@@ -189,6 +187,7 @@ void SYS_ReceiveFuntion(void)
 				Usart_SendNumber(frame_detect.TypeMessage);
 				Usart_Send_Char('\n');
 				Usart_Send_String("NAME_PLAYER_2");
+				free(string_name2);
 				string_name2 = malloc(frame_detect.LengthData-2);
 				fsm_len_string_name2 = frame_detect.LengthData-2;
 				flash_read_len_string2 = fsm_len_string_name2;
@@ -251,7 +250,9 @@ void SYS_ReadFlash(void)
 	previous_point2 = flash_read_str.Point2;
 	count2 = flash_read_str.Point2;
 	score_past1 = flash_read_str.Score1;
+	score_player1 = flash_read_str.Score1;
 	score_past2 = flash_read_str.Score2;	
+	score_player2 = flash_read_str.Score2;
 //	free(string_name1);
 //	string_name1 = malloc(flash_read_len_string1);
 	

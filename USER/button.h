@@ -25,7 +25,6 @@ extern uint16_t count1 , count2;
 void BUTTON_CountProcess(void);
 void BUTTON_Reads(void);
 void BUTTON_Display(void);
-void BUTTON_Read3(void);
 
 #ifdef __cplusplus
 }

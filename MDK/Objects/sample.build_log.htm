@@ -28,12 +28,16 @@ Project File Date:  08/10/2023
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling sys.c...
-..\USER\sys.c(258): warning:  #1-D: last line of file ends without a newline
+..\USER\sys.c(259): warning:  #1-D: last line of file ends without a newline
   }
 ..\USER\sys.c: 1 warning, 0 errors
+compiling ui.c...
+..\USER\ui.c(226): warning:  #1-D: last line of file ends without a newline
+  }
+..\USER\ui.c: 1 warning, 0 errors
 linking...
-Program Size: Code=15658 RO-data=24314 RW-data=128 ZI-data=2408  
-".\Objects\sample.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=15866 RO-data=24314 RW-data=128 ZI-data=2408  
+".\Objects\sample.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -66,10 +70,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device\Source\system_stm32f10x.c
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
       Source file:   Device\Source\ARM\startup_stm32f10x_md.s
       Include file:  RTE_Driver\Config\RTE_Device.h
-      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-      Source file:   Device\Source\system_stm32f10x.c
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\misc.h
@@ -83,8 +87,8 @@ Package Vendor: Keil
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 
    * Component: Keil::Device:StdPeriph Drivers:RCC:3.6.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
 
    * Component: Keil::Device:StdPeriph Drivers:SPI:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_spi.h
@@ -93,7 +97,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:USART:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_usart.c
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

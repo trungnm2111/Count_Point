@@ -85,6 +85,7 @@ void GPIO_LedChange(void)
 
 void GPIO_Inits(void)
 {
+	previous_point1 = (uint8_t)0, previous_point2 = (uint8_t)0;
 	GPIO_InitLed();
 	GPIO_InitSpi();
 	GPIO_InitButton();
