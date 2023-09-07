@@ -21,6 +21,7 @@ uint8_t score_player1 = 0, score_player2 = 0;
 	stt_new1 = GPIO_ReadInputDataBit(PORT_BUTTON_1, PIN_BUTTON_1);
 	if(stt_old1 == 1 && stt_new1 == 0 && button_pressed == 0)
 	{
+		wrong_point1 = count1;
 		count1++;
 		button_pressed = 1;
 	}
@@ -32,6 +33,7 @@ uint8_t score_player1 = 0, score_player2 = 0;
 	stt_new2 = GPIO_ReadInputDataBit(PORT_BUTTON_2, PIN_BUTTON_2);
 	if(stt_old2 == 1 && stt_new2 == 0 && button_pressed == 0)
 	{
+		wrong_point2 = count2;
 		count2++;
 		button_pressed = 1;
 	}
@@ -44,8 +46,14 @@ uint8_t score_player1 = 0, score_player2 = 0;
 	stt_new3 = GPIO_ReadInputDataBit(PORT_BUTTON_RESET, PIN_BUTTON_RESET);
 	if(stt_old3 == 1 && stt_new3 == 0 && button_pressed == 0 )
 	{
-		count1 --;
-		count2 --;
+		if(wrong_point1 != count1)
+		{
+			count1 = wrong_point1;
+		}
+		if(wrong_point2 != count2)
+		{
+			count2 = wrong_point2;
+		}
 		button_pressed = 1;
 	}
 	else if(stt_old3 == 0 && stt_new3 == 1)

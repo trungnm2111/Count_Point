@@ -13,7 +13,7 @@
 
 extern uint8_t previous_point1, previous_point2;
 extern uint8_t score_past1, score_past2;
-
+extern uint8_t wrong_point1 , wrong_point2;
 void UI_Frame(void);
 void UI_RoundNumber(uint8_t number,uint8_t round);
 void UI_Points1(uint8_t point);

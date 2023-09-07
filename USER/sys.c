@@ -7,6 +7,9 @@ static uint8_t game_ended = 0;
 u8 flag_check_save_flash = 0;
 uint8_t *string_name2;
 uint8_t *string_name1;
+
+
+
 static uint16_t fsm_len_string_name1 = 0, fsm_len_string_name2 = 0;
 
 static void Print_Data_Detect(FrameMsg_t frame);
@@ -253,7 +256,5 @@ void SYS_ReadFlash(void)
 	score_player1 = flash_read_str.Score1;
 	score_past2 = flash_read_str.Score2;	
 	score_player2 = flash_read_str.Score2;
-//	free(string_name1);
-//	string_name1 = malloc(flash_read_len_string1);
 	
 }
